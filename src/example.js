@@ -5,4 +5,4 @@ function writeIt() {
     writeImpl();
 }
 
-document["write"]("<script>alert()</script>");
+document["writeln"]("<script>alert()</script>");
