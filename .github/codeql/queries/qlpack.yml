@@ -1,4 +1,4 @@
 name: my-custom-queries
 version: 0.0.0
 dependencies:
- codeql/javascript-all: ~0.0.10
+ codeql/javascript-all: ~0.3.2
