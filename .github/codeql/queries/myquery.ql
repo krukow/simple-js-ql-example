@@ -16,8 +16,8 @@ import javascript
  * A call to either `setTimeout` or `setInterval` where
  * a string literal is passed as first argument.
  */
-class EvilTwin extends DataFlow::CallNode {
-  EvilTwin() {
+class SetTimeoutOrInterval extends DataFlow::CallNode {
+  SetTimeoutOrInterval() {
     exists(string fn | fn = "setTimeout" or fn = "setInterval" |
       this = DataFlow::globalVarRef(fn).getACall() and
       getArgument(0).asExpr() instanceof ConstantString
@@ -36,5 +36,5 @@ class DocumentWrite extends DataFlow::CallNode {
 }
 
 from DataFlow::Node node
-where node instanceof DocumentWrite or node instanceof EvilTwin
+where node instanceof DocumentWrite or node instanceof SetTimeoutOrInterval
 select node, "Avoid using functions that evaluate strings as code."
